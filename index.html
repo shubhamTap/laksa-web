@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LAKSA</title>
 <meta name="description" content="LAKSA helps kirana shops and thela carts track what they sell and know what to reorder.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
   :root {
     --navy: #020F32;
@@ -50,8 +52,9 @@
   }
   header { background: var(--navy); color: #F7F2E7; padding: 44px 24px 38px; }
   .wrap { max-width: 46rem; margin: 0 auto; width: 100%; }
-  .brand { font-size: 30px; font-weight: 800; letter-spacing: 0.14em; margin: 0 0 8px; }
-  header p { margin: 0; color: #A9B6D2; font-size: 15.5px; }
+  .brand-link { display: inline-block; line-height: 0; }
+  .brand-logo { height: 40px; width: auto; }
+  header p { margin: 12px 0 0; color: #A9B6D2; font-size: 15.5px; }
   main { flex: 1; padding: 40px 24px 56px; }
   h2 { font-size: 19px; margin: 0 0 10px; text-wrap: balance; }
   p { margin: 0 0 16px; }
@@ -68,6 +71,7 @@
   footer .wrap { display: flex; gap: 16px; flex-wrap: wrap; justify-content: space-between; }
   @media (max-width: 34rem) {
     header { padding: 32px 18px 28px; }
+    .brand-logo { height: 32px; }
     main { padding: 28px 18px 40px; }
   }
 </style>
@@ -76,7 +80,7 @@
 
 <header>
   <div class="wrap">
-    <p class="brand">LAKSA</p>
+    <a class="brand-link" href="/"><img class="brand-logo" src="/laksa-logo.png" alt="LAKSA"></a>
     <p>Inventory and ordering for kirana shops and thela carts</p>
   </div>
 </header>
@@ -107,7 +111,11 @@
 <footer>
   <div class="wrap">
     <span>&copy; Laksa Technology</span>
-    <span><a href="/privacy.html">Privacy Policy</a></span>
+    <span>
+      <a href="/privacy.html">Privacy Policy</a>
+      &nbsp;&middot;&nbsp;
+      <a href="/delete-account.html">Delete your account</a>
+    </span>
   </div>
 </footer>
 

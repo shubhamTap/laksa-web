@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delete your LAKSA account</title>
+<meta name="description" content="How to delete your LAKSA account and its data, from inside the app or by email if you no longer have the app installed.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root {
+    --navy: #020F32;
+    --ink: #14243F;
+    --ink-soft: #5A6472;
+    --paper: #F7F7F5;
+    --card: #FFFFFF;
+    --rule: #E2E2DE;
+    --gold: #C08A1E;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --navy: #0A1A3F;
+      --ink: #E8ECF4;
+      --ink-soft: #A3AEC2;
+      --paper: #0B1224;
+      --card: #121B31;
+      --rule: #26314B;
+      --gold: #E0B252;
+    }
+  }
+  :root[data-theme="dark"] {
+    --navy: #0A1A3F;
+    --ink: #E8ECF4;
+    --ink-soft: #A3AEC2;
+    --paper: #0B1224;
+    --card: #121B31;
+    --rule: #26314B;
+    --gold: #E0B252;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
+    color: var(--ink);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  header { background: var(--navy); color: #F7F2E7; padding: 34px 24px 30px; }
+  .wrap { max-width: 46rem; margin: 0 auto; width: 100%; }
+  .brand-link { display: inline-block; line-height: 0; }
+  .brand-logo { height: 40px; width: auto; }
+  header p { margin: 12px 0 0; color: #A9B6D2; font-size: 15.5px; }
+  main { flex: 1; padding: 40px 24px 56px; }
+  h1 { font-size: 26px; margin: 0 0 14px; text-wrap: balance; }
+  h2 { font-size: 18px; margin: 30px 0 10px; text-wrap: balance; }
+  p { margin: 0 0 16px; }
+  .lede { font-size: 17.5px; line-height: 1.6; }
+  ul { margin: 0 0 16px; padding-left: 1.25rem; }
+  li { margin-bottom: 8px; }
+  .card {
+    background: var(--card); border: 1px solid var(--rule);
+    border-radius: 12px; padding: 22px 24px; margin-top: 26px;
+  }
+  .card h2 { margin-top: 0; }
+  .steps { counter-reset: step; list-style: none; padding-left: 0; }
+  .steps li {
+    counter-increment: step; position: relative; padding-left: 2.1rem;
+    margin-bottom: 12px;
+  }
+  .steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0.1em;
+    width: 1.5rem; height: 1.5rem; border-radius: 50%;
+    background: var(--navy); color: #F7F2E7;
+    font-size: 12.5px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  code {
+    background: var(--paper); border: 1px solid var(--rule);
+    border-radius: 5px; padding: 1px 6px; font-size: 0.92em;
+  }
+  a { color: var(--gold); }
+  footer {
+    border-top: 1px solid var(--rule); padding: 22px 24px;
+    color: var(--ink-soft); font-size: 13.5px;
+  }
+  footer .wrap { display: flex; gap: 16px; flex-wrap: wrap; justify-content: space-between; }
+  @media (max-width: 34rem) {
+    header { padding: 26px 18px 24px; }
+    .brand-logo { height: 32px; }
+    main { padding: 28px 18px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand-link" href="/"><img class="brand-logo" src="/laksa-logo.png" alt="LAKSA"></a>
+    <p>Inventory and ordering for kirana shops and thela carts</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Delete your LAKSA account</h1>
+
+    <p class="lede">
+      You can delete your LAKSA account and its data at any time, either from
+      inside the app or by writing to us if you no longer have the app
+      installed.
+    </p>
+
+    <h2>From inside the app</h2>
+    <ol class="steps">
+      <li>Open LAKSA and tap the menu icon to open <strong>Settings</strong>.</li>
+      <li>Under <strong>Account actions</strong>, tap <strong>Delete account</strong>.</li>
+      <li>Type <code>DELETE</code> to confirm.</li>
+    </ol>
+    <p>
+      The account and its data are removed straight away. This cannot be
+      undone.
+    </p>
+
+    <div class="card">
+      <h2>If you no longer have the app</h2>
+      <p style="margin:0">
+        Email <a href="mailto:privacy@laksa.app?subject=Delete%20my%20LAKSA%20account">privacy@laksa.app</a>
+        from the email address associated with your account, and write
+        &ldquo;<strong>Delete my LAKSA account</strong>&rdquo;. We will verify
+        the request and delete the account and its associated personal and
+        trading data. We respond within 30 days, and there is no charge.
+      </p>
+    </div>
+
+    <h2>What gets deleted</h2>
+    <p>Everything held against your account:</p>
+    <ul>
+      <li>Your account and sign-in details &mdash; email address, mobile
+          number, and any Google or Facebook connection</li>
+      <li>Your shop's trading history &mdash; the products you stocked, the
+          sales and orders you recorded, and your stock counts</li>
+      <li>Everything the app calculated from those &mdash; stock estimates,
+          supplier lead times, forecasts and reorder suggestions</li>
+      <li>Your notification token, so the app stops contacting your device</li>
+    </ul>
+    <p>
+      The email address or mobile number becomes free to use for a new account
+      again.
+    </p>
+
+    <h2>What we keep, and for how long</h2>
+    <p>
+      Backups are overwritten on their ordinary cycle rather than edited, so a
+      copy may persist in them briefly after deletion. We may also retain the
+      minimum needed to meet a legal obligation. Nothing else is kept.
+    </p>
+
+    <div class="card">
+      <h2>If you only want to stop for a while</h2>
+      <p style="margin:0">
+        Deleting is permanent. If you are pausing rather than leaving, use
+        <strong>Settings &rarr; Deactivate account</strong> instead: your
+        sales, orders, inventory and history stay exactly as they are, and
+        signing in again brings the account back.
+      </p>
+    </div>
+
+    <p style="margin-top:26px">
+      For anything else about how we handle your information, see the
+      <a href="/privacy.html">Privacy Policy</a>.
+    </p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; Laksa Technology</span>
+    <span>
+      <a href="/privacy.html">Privacy Policy</a>
+      &nbsp;&middot;&nbsp;
+      <a href="/delete-account.html">Delete your account</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

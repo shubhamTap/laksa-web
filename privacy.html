@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — LAKSA</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
   :root {
     --navy: #020F32;
@@ -50,11 +52,10 @@
     padding: 40px 24px 34px;
   }
   .wrap { max-width: 46rem; margin: 0 auto; }
-  .brand {
-    font-size: 26px; font-weight: 800; letter-spacing: 0.14em;
-    margin: 0 0 6px;
-  }
-  header p { margin: 0; color: #A9B6D2; font-size: 15px; }
+  .brand-link { display: inline-block; line-height: 0; }
+  .brand-logo { height: 40px; width: auto; }
+  header p { margin: 12px 0 0; color: #A9B6D2; font-size: 15px; }
+  @media (max-width: 34rem) { .brand-logo { height: 32px; } }
   main { padding: 34px 24px 64px; }
   .card {
     background: var(--card);
@@ -103,7 +104,7 @@
 
 <header>
   <div class="wrap">
-    <p class="brand">LAKSA</p>
+    <a class="brand-link" href="/"><img class="brand-logo" src="/laksa-logo.png" alt="LAKSA"></a>
     <p>Inventory and ordering for kirana shops and thela carts</p>
   </div>
 </header>
@@ -303,8 +304,11 @@
   <p>
     Backups are overwritten on their ordinary cycle, and we may keep the
     minimum needed to meet a legal obligation. If you would rather ask us to
-    erase your data than do it yourself, write to
+    erase your data than do it yourself &mdash; or no longer have the app
+    installed &mdash; write to
     <a href="mailto:privacy@laksa.app">privacy@laksa.app</a> and we will.
+    <a href="/delete-account.html">Delete your account</a> has the full
+    instructions.
   </p>
 
   <h2 id="consent">Where we rely on your consent</h2>
@@ -413,7 +417,7 @@
   </p>
 
 </div>
-<footer>&copy; Laksa Technology</footer>
+<footer>&copy; Laksa Technology &nbsp;&middot;&nbsp; <a href="/delete-account.html">Delete your account</a></footer>
 </main>
 
 </body>
