@@ -114,15 +114,14 @@
 
   <h1>Privacy Policy</h1>
   <p class="dates">
-    Effective <strong>30 August 2026</strong> &middot; Last updated <strong>7 September 2026</strong>
+    Effective <strong>30 August 2026</strong> &middot; Last updated <strong>8 September 2026</strong>
   </p>
 
   <p class="lede">
     LAKSA helps a shopkeeper track what they sell and decide what to reorder.
     To do that it needs to know what you stock and how much of it you sell.
-    That is essentially all it collects. It carries no advertising, no
-    analytics or tracking software of any kind, and it never asks for
-    payment details.
+    That is essentially all it collects. It carries no advertising and no
+    analytics or tracking software, and it never asks for payment details.
   </p>
 
   <h2>Who we are</h2>
@@ -185,18 +184,47 @@
     <strong>What we deliberately do not collect.</strong> No prices, revenue or
     profit figures &mdash; the app is built to work without them. No information
     about your customers. No location or GPS data. No contacts, photos, camera
-    or microphone access. No advertising identifiers. No analytics, crash
-    reporting or tracking software is built into the app at all. And no bank,
-    card or payment details: LAKSA never asks for them, and never will through
-    the app.
+    or microphone access. No advertising identifiers. No advertising,
+    analytics, crash-reporting or attribution software: no Firebase Analytics,
+    no Crashlytics, no Sentry or anything like it, and Meta's app-event
+    logging and advertising-ID collection &mdash; which its sign-in library
+    switches on by default &mdash; are explicitly turned off, with both
+    permissions removed from the app. We check this against the built app
+    before a release rather than against our own source code, because
+    third-party libraries add things you did not ask for. And no bank, card
+    or payment details: LAKSA never asks for them, and never will through the
+    app.
   </div>
+
+  <p>
+    Two things are unavoidable and we would rather name them than let the list
+    above imply otherwise. Signing in and receiving notifications require the
+    app to hold identifiers issued by Google &mdash; a per-installation ID and
+    a notification token &mdash; and Google receives them. If you sign in by
+    SMS, Google also runs an automated check on the device to confirm the
+    request is genuine and not a bot. Neither is used to profile you, and
+    neither is an advertising identifier, but both are real and they leave
+    your device.
+  </p>
 
   <h2>Why we use it, and what we never do with it</h2>
   <p>
-    Your trading data exists for one purpose: to work out what you are likely
-    to sell and tell you what to reorder before you run out. Your account
-    details exist so you can sign in and so we can send you a verification code
-    or, if you allow it, a reminder to log the day's sales.
+    Your trading data does three things. It shows <em>you</em> what is
+    happening in your shop &mdash; what sold, how fast, and what is running
+    low. It works out what you are likely to sell, so the app can tell you
+    what to reorder before you run out. And it helps us make those forecasts
+    and recommendations better. Your account details exist so you can sign in
+    and so we can send you a verification code or, if you allow it, a reminder
+    to log the day's sales.
+  </p>
+  <p>
+    The third one deserves plain words, because it is the one usually buried in
+    vague language. When LAKSA suggests an order and you ignore it, change the
+    quantity, or run out anyway, we use that to make the next suggestion
+    better. Much of that learning stays inside your own account &mdash; the app
+    tunes itself to how you actually order. Where we use it to improve LAKSA
+    for everyone, the records are stripped of anything identifying you or your
+    shop first, and what comes out is a pattern, not your shop's history.
   </p>
   <p>
     <strong>We do not sell your data, rent it, or share it with advertisers.</strong>
@@ -229,12 +257,12 @@
       </tr>
       <tr>
         <td>Google Firebase</td>
-        <td>Your email address or mobile number when you sign in with Google, Facebook or SMS; your push token</td>
-        <td>Verifies who you are; delivers notifications</td>
+        <td>Your email address or mobile number when you sign in with Google, Facebook or SMS; your push token; a per-installation identifier; and, for SMS sign-in, an automated device check to confirm the request is genuine</td>
+        <td>Verifies who you are; delivers notifications; blocks automated abuse</td>
       </tr>
       <tr>
         <td>Meta&nbsp;/&nbsp;Facebook</td>
-        <td>Only what Facebook Login itself passes, and only if you choose that sign-in method</td>
+        <td>Only what Facebook Login itself passes, and only if you choose that sign-in method. Meta's library does start up with the app even if you never use Facebook sign-in, but we have turned off its event logging and advertising-ID collection, so it reports nothing to Meta unless you sign in that way</td>
         <td>Sign-in option</td>
       </tr>
       <tr>
