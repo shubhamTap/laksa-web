@@ -114,7 +114,7 @@
 
   <h1>Privacy Policy</h1>
   <p class="dates">
-    Effective <strong>30 August 2026</strong> &middot; Last updated <strong>8 September 2026</strong>
+    Effective <strong>30 August 2026</strong> &middot; Last updated <strong>9 September 2026</strong>
   </p>
 
   <p class="lede">
@@ -178,6 +178,13 @@
       Anything you type into the <strong>Report a problem</strong> box, and
       ordinary server logs kept for security and debugging.
     </li>
+    <li>
+      If the app crashes, a <strong>crash report</strong> &mdash; the error,
+      where in our code it happened, your phone's model and Android version,
+      how much memory and storage were free, and a short trail of which
+      screens you had opened. It carries none of your sales, your products or
+      your account details. Described in full below.
+    </li>
   </ul>
 
   <div class="note">
@@ -185,15 +192,19 @@
     profit figures &mdash; the app is built to work without them. No information
     about your customers. No location or GPS data. No contacts, photos, camera
     or microphone access. No advertising identifiers. No advertising,
-    analytics, crash-reporting or attribution software: no Firebase Analytics,
-    no Crashlytics, no Sentry or anything like it, and Meta's app-event
-    logging and advertising-ID collection &mdash; which its sign-in library
-    switches on by default &mdash; are explicitly turned off, with both
-    permissions removed from the app. We check this against the built app
-    before a release rather than against our own source code, because
-    third-party libraries add things you did not ask for. And no bank, card
-    or payment details: LAKSA never asks for them, and never will through the
-    app.
+    behavioural analytics or attribution software: no Firebase Analytics, no
+    Meta pixel, nothing that follows what you tap or how long you spend
+    doing it. Meta's app-event logging and advertising-ID collection &mdash;
+    which its sign-in library switches on by default &mdash; are explicitly
+    turned off, with both permissions removed from the app. We check this
+    against the built app before a release rather than against our own
+    source code, because third-party libraries add things you did not ask
+    for. And no bank, card or payment details: LAKSA never asks for them,
+    and never will through the app.
+    <br><br>
+    <strong>The one exception is crash reports</strong>, added on
+    9 September 2026 and described in the next paragraph. We would rather
+    name it here than let this list imply otherwise.
   </div>
 
   <p>
@@ -205,6 +216,23 @@
     request is genuine and not a bot. Neither is used to profile you, and
     neither is an advertising identifier, but both are real and they leave
     your device.
+  </p>
+
+  <p>
+    <strong>When the app crashes, it sends us a report.</strong> That report
+    says what went wrong &mdash; the error and the point in our code it came
+    from &mdash; along with your phone's model, its Android version, how much
+    memory and storage were free, and a short trail of which screens you had
+    opened, such as &ldquo;sales, added a category, tapped Done&rdquo;. It
+    does not contain your sales, your products, your email address or your
+    phone number.
+  </p>
+  <p>
+    We use these only to find and fix the fault. They are handled for us by
+    Google (Firebase Crashlytics), listed in the table above. We added this
+    deliberately: before it, an app that failed on a shopkeeper's phone told
+    us nothing at all unless they wrote to us, and the failures hardest to
+    reproduce are exactly the ones nobody reports.
   </p>
 
   <h2>Why we use it, and what we never do with it</h2>
@@ -257,8 +285,8 @@
       </tr>
       <tr>
         <td>Google Firebase</td>
-        <td>Your email address or mobile number when you sign in with Google, Facebook or SMS; your push token; a per-installation identifier; and, for SMS sign-in, an automated device check to confirm the request is genuine</td>
-        <td>Verifies who you are; delivers notifications; blocks automated abuse</td>
+        <td>Your email address or mobile number when you sign in with Google, Facebook or SMS; your push token; a per-installation identifier; for SMS sign-in, an automated device check to confirm the request is genuine; and, if the app crashes, the crash report described below</td>
+        <td>Verifies who you are; delivers notifications; blocks automated abuse; tells us when the app has broken</td>
       </tr>
       <tr>
         <td>Meta&nbsp;/&nbsp;Facebook</td>
@@ -332,6 +360,14 @@
         again.</li>
   </ul>
   <p>
+    <strong>Crash reports are separate, and deleting your account does not
+    remove them.</strong> They are not filed against your account &mdash; they
+    identify an installation of the app rather than a person &mdash; so there
+    is no way for us to find yours and no way for you to be identified from
+    them. Google deletes them on its own schedule (90 days at the time of
+    writing). We would rather say this plainly than let &ldquo;delete erases
+    everything&rdquo; stand when it does not.
+    <br><br>
     Backups are overwritten on their ordinary cycle, and we may keep the
     minimum needed to meet a legal obligation. If you would rather ask us to
     erase your data than do it yourself &mdash; or no longer have the app
@@ -345,7 +381,8 @@
   <p>
     Being specific about this matters, because you cannot meaningfully
     withdraw consent you were never told you had given. We rely on your
-    consent for exactly two things:
+    consent for exactly two things &mdash; and there is a third thing we do
+    that consent is not the honest word for. All three are below:
   </p>
   <ul>
     <li><strong>Running the app for you.</strong> Creating an account and
@@ -355,6 +392,15 @@
     <li><strong>Push notifications.</strong> Separate, optional, and asked for
         by your device the first time. Declining costs you nothing else.</li>
   </ul>
+  <p>
+    <strong>Crash reports are the third, and they are not separately
+    switchable.</strong> If the app breaks on your phone it tells us, and
+    there is no setting to turn that off today. We think that is the right
+    trade for an app this young &mdash; a crash nobody reports is a crash
+    nobody fixes &mdash; but you should be told it rather than discover it.
+    It carries none of your shop's data, and it stops the moment you stop
+    using the app.
+  </p>
   <p>
     We do not rely on consent for advertising, marketing or profiling, because
     we do none of those things.
