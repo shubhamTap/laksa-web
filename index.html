@@ -3,120 +3,383 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LAKSA</title>
-<meta name="description" content="LAKSA helps kirana shops and thela carts track what they sell and know what to reorder.">
+<title>LAKSA &mdash; Stock smart. Dukaan smart.</title>
+<meta name="description" content="LAKSA helps kirana shops and thela carts record daily sales and know what to reorder before stock runs out. Free on Google Play, in English and 10 Indian languages.">
+<meta name="theme-color" content="#0A1E3E">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
+  /* The homepage is dark in every colour scheme: it is the brand's navy, as
+     in Shubham's mockup of 2026-10-07. The privacy and deletion pages keep
+     their own light/dark styles. */
   :root {
-    --navy: #020F32;
-    --ink: #14243F;
-    --ink-soft: #5A6472;
-    --paper: #F7F7F5;
-    --card: #FFFFFF;
-    --rule: #E2E2DE;
-    --gold: #C08A1E;
+    --bg-top: #0A1E3E;
+    --bg: #08162F;
+    --bg-bottom: #06122A;
+    --card: #0E1C35;
+    --card-edge: #22304B;
+    --rule: #19253C;
+    --disc: #1B2740;
+    --gold: #F5B942;
+    --gold-bright: #FAC557;
+    --gold-ink: #1B1405;
+    --ink: #FFFFFF;
+    --ink-soft: #C9D3E4;
+    --ink-quiet: #93A1BA;
+    color-scheme: dark;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --navy: #0A1A3F;
-      --ink: #E8ECF4;
-      --ink-soft: #A3AEC2;
-      --paper: #0B1224;
-      --card: #121B31;
-      --rule: #26314B;
-      --gold: #E0B252;
-    }
-  }
-  :root[data-theme="dark"] {
-    --navy: #0A1A3F;
-    --ink: #E8ECF4;
-    --ink-soft: #A3AEC2;
-    --paper: #0B1224;
-    --card: #121B31;
-    --rule: #26314B;
-    --gold: #E0B252;
-  }
-
   * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: var(--paper);
+    background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 45%, var(--bg-bottom) 100%);
+    background-color: var(--bg);
     color: var(--ink);
-    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial, sans-serif;
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Noto Sans", "Helvetica Neue", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
-  }
-  header { background: var(--navy); color: #F7F2E7; padding: 44px 24px 38px; }
-  .wrap { max-width: 46rem; margin: 0 auto; width: 100%; }
-  .brand-link { display: inline-block; line-height: 0; }
-  .brand-logo { height: 40px; width: auto; }
-  header p { margin: 12px 0 0; color: #A9B6D2; font-size: 15.5px; }
-  main { flex: 1; padding: 40px 24px 56px; }
-  h2 { font-size: 19px; margin: 0 0 10px; text-wrap: balance; }
-  p { margin: 0 0 16px; }
-  .lede { font-size: 17.5px; line-height: 1.6; }
-  .card {
-    background: var(--card); border: 1px solid var(--rule);
-    border-radius: 12px; padding: 22px 24px; margin-top: 30px;
+    overflow-x: hidden;
   }
   a { color: var(--gold); }
-  footer {
-    border-top: 1px solid var(--rule); padding: 22px 24px;
-    color: var(--ink-soft); font-size: 13.5px;
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  svg { display: block; }
+
+  /* ---- header: the app's own logo, and nothing else up here ------------ */
+  .top { padding: 26px 0 8px; position: relative; z-index: 3; }
+  .top-row { display: flex; align-items: center; gap: 16px; }
+  .brand { display: inline-block; line-height: 0; }
+  .brand img { height: 42px; width: auto; }
+  .tagline {
+    padding-left: 16px; border-left: 1px solid rgba(255, 255, 255, 0.28);
+    color: var(--ink-soft); font-size: 15px; line-height: 1.2;
   }
-  footer .wrap { display: flex; gap: 16px; flex-wrap: wrap; justify-content: space-between; }
-  @media (max-width: 34rem) {
-    header { padding: 32px 18px 28px; }
-    .brand-logo { height: 32px; }
-    main { padding: 28px 18px 40px; }
+
+  /* ---- hero ------------------------------------------------------------- */
+  /* The photo runs off the right edge on narrower screens; never let it
+     make the page scroll sideways. */
+  .hero { position: relative; overflow-x: clip; }
+  .hero-grid {
+    display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: 24px; align-items: start; padding-top: 18px; padding-bottom: 28px;
+  }
+  .hero-copy { position: relative; z-index: 2; }
+  .pill {
+    display: inline-block; padding: 5px 16px; border-radius: 999px;
+    border: 1.5px solid rgba(245, 185, 66, 0.75); color: var(--gold-bright);
+    background: rgba(245, 185, 66, 0.08); font-size: 16px; font-weight: 600;
+  }
+  h1 {
+    margin: 18px 0 18px; font-size: clamp(36px, 6.2vw, 76px); line-height: 1.04;
+    letter-spacing: -0.02em; font-weight: 800; text-wrap: balance;
+  }
+  h1 .gold { color: var(--gold); }
+  .hook { margin: 0 0 14px; font-size: 20px; font-weight: 700; line-height: 1.45; max-width: 36rem; }
+  .lede { margin: 0 0 12px; color: var(--ink-soft); font-size: 17px; max-width: 38rem; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 26px; align-items: center; }
+  /* Google's own badge, unchanged (their rules: no recolouring or edits).
+     The PNG carries its clear space as transparent padding - a quarter of
+     the badge's height - so the negative margin only stops that padding
+     from making the row taller; nothing sits inside it. */
+  .play-badge { display: inline-block; line-height: 0; margin: -13px -14px; }
+  .play-badge img { height: 78px; width: auto; }
+  .langs { position: relative; }
+  .langs summary {
+    list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 20px; border-radius: 12px; border: 1.5px solid rgba(245, 185, 66, 0.65);
+    color: var(--gold-bright); font-weight: 600; font-size: 16px; user-select: none;
+  }
+  .langs summary::-webkit-details-marker { display: none; }
+  .langs summary svg { width: 22px; height: 22px; }
+  .langs summary .chev { width: 18px; height: 18px; transition: transform 0.2s; }
+  .langs[open] summary .chev { transform: rotate(90deg); }
+  .lang-list {
+    margin: 10px 0 0; padding: 12px 16px; border-radius: 12px; background: var(--card);
+    border: 1px solid var(--card-edge); color: var(--ink-soft); font-size: 16px; line-height: 1.9;
+    max-width: 22rem;
+  }
+  .lang-list span { white-space: nowrap; }
+
+  /* The picture: the shopkeeper behind, the phone in front (aria-hidden: the
+     words on the phone repeat what the page already says). */
+  /* The face sits about a third of the way into the photo, so the photo
+     starts under the phone's right side (--phone-l + 0.72 x --phone-w) and
+     the face is always clear of the phone, at every width. */
+  .hero-visual {
+    --phone-w: 282px; --phone-l: 2%; --photo-h: 610px;
+    position: relative; height: 610px;
+  }
+  .shopkeeper {
+    position: absolute; top: -34px; height: var(--photo-h); width: auto; max-width: none;
+    left: calc(var(--phone-l) + var(--phone-w) * 0.72);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 16%),
+                        linear-gradient(to bottom, #000 74%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent 0%, #000 16%),
+                linear-gradient(to bottom, #000 74%, transparent 100%);
+    mask-composite: intersect;
+  }
+  .arc { position: absolute; left: calc(var(--phone-l) - 70px); top: 64px; width: 360px; height: 360px; opacity: 0.85; }
+  .rays { position: absolute; left: calc(var(--phone-l) - 26px); top: 0; width: 64px; height: 64px; }
+
+  .phone {
+    position: absolute; left: var(--phone-l); top: 26px; z-index: 2;
+    width: var(--phone-w); aspect-ratio: 9 / 18.6; padding: 10px;
+    border-radius: 44px; background: #0B0C10;
+    box-shadow: 0 0 0 2px #A8B0BB, 0 0 0 4px #5B636E, 0 30px 60px rgba(0, 0, 0, 0.55);
+    transform: rotate(6deg);
+  }
+  .screen {
+    position: relative; height: 100%; border-radius: 34px; overflow: hidden;
+    background: linear-gradient(180deg, #0B1E40 0%, #0A1A37 100%);
+    padding: 14px 14px 0; display: flex; flex-direction: column; color: #fff;
+    font-family: Roboto, "Segoe UI", -apple-system, sans-serif;
+  }
+  .camera {
+    position: absolute; left: 50%; top: 10px; width: 64px; height: 18px; margin-left: -32px;
+    border-radius: 999px; background: #000;
+  }
+  .status { display: flex; justify-content: space-between; align-items: center;
+            font-size: 11px; font-weight: 700; padding: 0 8px; height: 18px; }
+  .status .icons { display: flex; gap: 4px; align-items: center; }
+  .status .icons svg { width: 14px; height: 10px; }
+  .appbar { display: flex; align-items: center; justify-content: space-between; margin: 12px 2px 0; }
+  .appbar svg { width: 18px; height: 18px; }
+  .appbar img { height: 20px; width: auto; }
+  .hello { margin: 18px 4px 0; }
+  .hello strong { display: block; font-size: 24px; line-height: 1.2; }
+  .hello span { display: block; font-size: 11.5px; color: #C3CCDD; margin-top: 2px; }
+  .record {
+    margin: 16px 0 14px; display: flex; align-items: center; gap: 12px; padding: 15px 16px;
+    border-radius: 13px; background: var(--gold-bright); color: #1A1306;
+    font-weight: 700; font-size: 13px;
+  }
+  .record b { font-size: 22px; line-height: 1; font-weight: 600; }
+  .tile {
+    display: flex; align-items: center; gap: 11px; padding: 14px 11px; margin-bottom: 10px;
+    border-radius: 13px; background: #13284D; border: 1px solid #1E3560;
+  }
+  .tile .ico {
+    flex: none; width: 38px; height: 38px; border-radius: 50%; background: #1C2D4F;
+    display: grid; place-items: center;
+  }
+  .tile .ico svg { width: 20px; height: 20px; }
+  .tile .txt { flex: 1; min-width: 0; }
+  .tile b { display: block; font-size: 13px; line-height: 1.25; }
+  .tile small { display: block; font-size: 10px; line-height: 1.3; color: #B9C3D6; margin-top: 3px; }
+  .tile .go { flex: none; width: 12px; height: 12px; opacity: 0.7; }
+  .tabs {
+    margin: auto -14px 0; display: grid; grid-template-columns: repeat(4, 1fr);
+    padding: 8px 6px 14px; background: #0A1733; border-top: 1px solid #1B2C4E;
+    font-size: 9px; color: #A9B4C8; text-align: center;
+  }
+  .tabs span { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .tabs svg { width: 18px; height: 18px; }
+  .tabs .on { color: var(--gold-bright); }
+
+  /* ---- three promises -------------------------------------------------- */
+  .features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 4px; }
+  .card {
+    background: var(--card); border: 1px solid var(--card-edge); border-radius: 16px;
+  }
+  .feature { display: flex; gap: 18px; align-items: center; padding: 22px 22px; }
+  .disc {
+    flex: none; width: 66px; height: 66px; border-radius: 50%; background: var(--disc);
+    display: grid; place-items: center; box-shadow: inset 0 0 0 1px rgba(245, 185, 66, 0.12);
+  }
+  .disc svg { width: 32px; height: 32px; }
+  .feature h3 { margin: 0 0 4px; font-size: 19px; line-height: 1.3; }
+  .feature p { margin: 0; color: var(--ink-soft); font-size: 15.5px; line-height: 1.45; }
+
+  /* ---- who it is for ---------------------------------------------------- */
+  .facts {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 22px;
+    border-top: 1px solid var(--rule);
+  }
+  .fact {
+    display: flex; align-items: center; justify-content: center; gap: 14px; padding: 16px 12px;
+    color: var(--ink); font-size: 16px;
+  }
+  .fact + .fact { border-left: 1px solid var(--rule); }
+  .fact svg { flex: none; width: 30px; height: 30px; }
+
+  /* ---- contact and footer ---------------------------------------------- */
+  .contact { margin-top: 18px; padding: 20px 24px; }
+  .contact h2 { margin: 0 0 4px; font-size: 20px; }
+  .contact p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+  footer { margin-top: 28px; border-top: 1px solid var(--rule); padding: 18px 0 26px; }
+  .foot { display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: space-between;
+          color: var(--ink-quiet); font-size: 14px; }
+  .foot a { color: var(--gold); }
+  .tm { margin-top: 8px; color: #6F7E98; font-size: 12px; }
+
+  /* ---- narrower screens ------------------------------------------------- */
+  /* Where the text column runs close to the phone, keep the arc behind the
+     phone rather than across the words. */
+  @media (max-width: 1240px) {
+    .arc { left: calc(var(--phone-l) - 24px); width: 320px; height: 320px; top: 84px; }
+  }
+  @media (max-width: 1060px) {
+    .features { grid-template-columns: 1fr; gap: 14px; }
+    .feature { padding: 18px 20px; }
+  }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { --phone-l: 7%; height: 600px; }
+    .facts { grid-template-columns: 1fr; }
+    .fact { justify-content: flex-start; }
+    .fact + .fact { border-left: 0; border-top: 1px solid var(--rule); }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 18px; }
+    .top { padding-top: 20px; }
+    .brand img { height: 34px; }
+    .tagline { font-size: 13.5px; padding-left: 12px; }
+    .hook { font-size: 18px; }
+    .lede { font-size: 16px; }
+    
+    .hero-visual { --phone-w: 214px; --phone-l: 2%; --photo-h: 470px; height: 480px; }
+    .shopkeeper { top: -10px; }
+    .phone { top: 22px; border-radius: 34px; padding: 8px; }
+    .screen { border-radius: 27px; padding: 11px 10px 0; }
+    .status { font-size: 9px; }
+    .appbar img { height: 16px; }
+    .hello { margin-top: 12px; }
+    .hello strong { font-size: 18px; }
+    .hello span { font-size: 9px; }
+    .record { margin: 11px 0 9px; padding: 10px 11px; font-size: 10px; }
+    .record b { font-size: 16px; }
+    .tile { padding: 9px 8px; margin-bottom: 7px; gap: 8px; }
+    .tile b { font-size: 10px; }
+    .tile small { font-size: 8px; }
+    .tile .ico { width: 28px; height: 28px; }
+    .tile .ico svg { width: 15px; height: 15px; }
+    .tabs { margin: auto -10px 0; font-size: 8px; padding-bottom: 10px; }
+    .tabs svg { width: 15px; height: 15px; }
+    .arc { width: 270px; height: 270px; top: 60px; }
+    .rays { width: 48px; height: 48px; }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <a class="brand-link" href="/"><img class="brand-logo" src="/laksa-logo.png" alt="LAKSA"></a>
-    <p>Inventory and ordering for kirana shops and thela carts</p>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="/"><img src="/laksa-wordmark.png" alt="LAKSA" width="751" height="265"></a>
+    <span class="tagline">Democratizing optimization.</span>
   </div>
 </header>
 
 <main>
-  <div class="wrap">
-    <p class="lede">
-      LAKSA helps a shopkeeper keep track of what they sell and know what to
-      reorder before they run out &mdash; without asking them to keep books,
-      enter prices, or learn accounting.
-    </p>
-    <p>
-      Record the day's sales in a few taps. The app learns how fast each
-      product moves and how long each supplier takes, and tells you what to
-      order and when.
-    </p>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="pill" lang="hi">बचत बढ़े, मुनाफा बढ़े।</span>
+        <h1>Stock smart.<br><span class="gold">Dukaan smart.</span></h1>
+        <p class="hook">Kya mangana hai, kitna mangana hai, aur kab mangana hai &mdash; LAKSA batayega.</p>
+        <p class="lede">LAKSA helps kirana shops and thela carts record daily sales and know what
+          to reorder before stock runs out &mdash; without asking them to keep books, enter prices,
+          or learn accounting.</p>
+        <p class="lede">Bas sales record karo. No complicated <span lang="hi">हिसाब-किताब</span>.
+          No prices. No complicated software.</p>
+        <div class="ctas">
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=app.laksa.dreamon"><img src="/assets/google-play-badge.png" alt="Get it on Google Play" width="202" height="78"></a>
+          <details class="langs">
+            <summary>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3.4 3 14.6 0 18"/><path d="M12 3c-3 3.4-3 14.6 0 18"/></svg>
+              Available in 10 Indian languages
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+            </summary>
+            <p class="lang-list"><span lang="hi">हिन्दी</span> &middot; <span lang="bn">বাংলা</span> &middot; <span lang="gu">ગુજરાતી</span> &middot; <span lang="pa">ਪੰਜਾਬੀ</span> &middot; <span lang="mr">मराठी</span> &middot; <span lang="te">తెలుగు</span> &middot; <span lang="ta">தமிழ்</span> &middot; <span lang="kn">ಕನ್ನಡ</span> &middot; <span lang="or">ଓଡ଼ିଆ</span> &middot; <span lang="ml">മലയാളം</span><br><span>and English</span></p>
+          </details>
+        </div>
+      </div>
 
-    <div class="card">
-      <h2>Contact</h2>
-      <p style="margin:0">
-        LAKSA is built by Shubham Tapadar, doing business as Laksa Technology,
-        an Ontario-registered business.<br>
-        Write to <a href="mailto:hello@laksa.app">hello@laksa.app</a>.
-      </p>
+      <div class="hero-visual" aria-hidden="true">
+        <img class="shopkeeper" src="/assets/hero-shopkeeper.jpg" alt="" width="424" height="526">
+        <svg class="arc" viewBox="0 0 360 360" fill="none"><defs><linearGradient id="arcg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5B942" stop-opacity="0.95"/><stop offset="0.6" stop-color="#F5B942" stop-opacity="0.35"/><stop offset="1" stop-color="#F5B942" stop-opacity="0"/></linearGradient></defs><circle cx="180" cy="180" r="176" stroke="url(#arcg)" stroke-width="2.5"/></svg>
+        <svg class="rays" viewBox="0 0 64 64" fill="none" stroke="#F5B942" stroke-width="4" stroke-linecap="round"><path d="M34 6l-3 12"/><path d="M52 14 41 24"/><path d="M8 20l13 6"/><path d="M58 34l-13-2"/></svg>
+        <div class="phone">
+          <div class="screen">
+            <div class="camera"></div>
+            <div class="status"><span>9:41</span><span class="icons">
+              <svg viewBox="0 0 14 10" fill="#fff"><rect x="0" y="7" width="2" height="3" rx="0.5"/><rect x="3.5" y="5" width="2" height="5" rx="0.5"/><rect x="7" y="2.5" width="2" height="7.5" rx="0.5"/><rect x="10.5" y="0" width="2" height="10" rx="0.5"/></svg>
+              <svg viewBox="0 0 14 10" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4a8 8 0 0 1 11 0"/><path d="M4 6.4a4.5 4.5 0 0 1 6 0"/><circle cx="7" cy="8.6" r="0.9" fill="#fff" stroke="none"/></svg>
+              <svg viewBox="0 0 14 10"><rect x="0.6" y="1.6" width="11" height="6.8" rx="1.8" fill="none" stroke="#fff" stroke-width="1.1"/><rect x="2" y="3" width="8.2" height="4" rx="1" fill="#fff"/><rect x="12.3" y="3.6" width="1.2" height="2.8" rx="0.5" fill="#fff"/></svg>
+            </span></div>
+            <div class="appbar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 6-6 6 6 6"/></svg>
+              <img src="/laksa-wordmark.png" alt="">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </div>
+            <div class="hello"><strong>Namaste!</strong><span>Aaj ka sales record karein</span></div>
+            <div class="record"><b>+</b><span>Aaj ki bikri record karein</span></div>
+            <div class="tile">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F5B942" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20v-4"/><path d="M10 20v-7"/><path d="M15 20v-5"/><path d="M20 20v-9"/><path d="M4 11.5 9.5 6l4 3L19 3.5"/><path d="M15.5 3.5H19V7"/></svg></span>
+              <span class="txt"><b>Kya mangana hai?</b><small>Next order suggestions</small></span>
+              <svg class="go" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+            </div>
+            <div class="tile">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F5B942" stroke-width="2" stroke-linejoin="round"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="m4 7.5 8 4.5 8-4.5"/><path d="M12 12v9"/></svg></span>
+              <span class="txt"><b>Stock khatam hone se pehle jaaniye</b><small>Never run out of fast-selling items</small></span>
+              <svg class="go" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+            </div>
+            <div class="tile">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F5B942" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6"/><path d="M10 17h6"/></svg></span>
+              <span class="txt"><b>Seedha aur aasaan</b><small>No prices. No complicated hisaab-kitab.</small></span>
+              <svg class="go" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+            </div>
+            <div class="tabs">
+              <span class="on"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></svg>Home</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 20v-6"/><path d="M12 20V9"/><path d="M18 20v-9"/><path d="M5 9 10 5l4 3 5-4"/></svg>Sales</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 4h12v17H6z"/><path d="M9 4V3h6v1"/><path d="M9 10h6M9 14h6"/></svg>Orders</span>
+              <span><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="18" cy="12" r="1.8"/></svg>More</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="wrap features">
+    <article class="card feature">
+      <span class="disc"><svg viewBox="0 0 24 24" fill="none" stroke="#F5B942" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 12V6a1.5 1.5 0 0 1 3 0v5"/><path d="M12.5 10.5a1.5 1.5 0 0 1 3 0V12"/><path d="M15.5 11.5a1.5 1.5 0 0 1 3 0v3.5a6 6 0 0 1-6 6h-1a6 6 0 0 1-4.7-2.3l-2.3-3a1.6 1.6 0 0 1 2.5-2l1.5 1.8V12"/><path d="M7.2 4.2 8 5"/><path d="M11 1.8v1.2"/><path d="M14.8 4.2 14 5"/></svg></span>
+      <div><h3>Record sales in seconds</h3><p>Quick daily entry in just a few taps.</p></div>
+    </article>
+    <article class="card feature">
+      <span class="disc"><svg viewBox="0 0 24 24" fill="none" stroke="#F5B942" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="m4 7.5 8 4.5 8-4.5"/><path d="M12 12v9"/></svg></span>
+      <div><h3>Know what to reorder</h3><p>See what to order before fast-selling items run out.</p></div>
+    </article>
+    <article class="card feature">
+      <span class="disc"><svg viewBox="0 0 24 24" fill="none" stroke="#F5B942" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20v-4"/><path d="M10 20v-7"/><path d="M15 20v-5"/><path d="M20 20v-9"/><path d="M4 11.5 9.5 6l4 3L19 3.5"/><path d="M15.5 3.5H19V7"/></svg></span>
+      <div><h3>Avoid extra stock</h3><p>Don&rsquo;t lock money in products that move slowly.</p></div>
+    </article>
+  </section>
+
+  <section class="wrap">
+    <div class="facts">
+      <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="#F5B942" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 9 5 4h14l1.5 5"/><path d="M3.5 9c0 1.7 1.3 3 2.9 3s2.9-1.3 2.9-3c0 1.7 1.3 3 2.7 3s2.8-1.3 2.8-3c0 1.7 1.3 3 2.9 3s2.8-1.3 2.8-3"/><path d="M5 12v8h14v-8"/><path d="M10 20v-5h4v5"/></svg><span>For kirana shops and thela carts</span></div>
+      <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="#F5B942" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M2.8 20c0-3.5 2.8-6.2 6.2-6.2s6.2 2.7 6.2 6.2"/><circle cx="17" cy="9" r="2.6"/><path d="M16 14.1c3 .1 5.2 2.6 5.2 5.9"/></svg><span>Made for everyday business</span></div>
+      <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="#F5B942" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h10"/><path d="M8 3v2"/><path d="M5.5 5c.6 3.2 2.6 5.8 5.5 7.3"/><path d="M10.5 5C9.8 8.5 7.6 11 4 12.8"/><path d="m12.5 21 4-10 4 10"/><path d="M14 17.5h5"/></svg><span>Available in 10 Indian languages</span></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="card contact">
+      <h2>Contact</h2>
+      <p>LAKSA is built by Shubham Tapadar, doing business as Laksa Technology, an
+        Ontario-registered business.<br>
+        Write to <a href="mailto:hello@laksa.app">hello@laksa.app</a></p>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>&copy; Laksa Technology</span>
-    <span>
-      <a href="/privacy.html">Privacy Policy</a>
-      &nbsp;&middot;&nbsp;
-      <a href="/delete-account.html">Delete your account</a>
-    </span>
+    <div class="foot">
+      <span>&copy; Laksa Technology</span>
+      <span><a href="/privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="/delete-account.html">Delete your account</a></span>
+    </div>
+    <p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p>
   </div>
 </footer>
 
