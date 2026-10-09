@@ -32,6 +32,9 @@
   html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
+    /* At least the window's height, so the gradient reaches the foot of a
+       tall window rather than starting again under the footer. */
+    min-height: 100vh;
     background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 45%, var(--bg-bottom) 100%);
     background-color: var(--bg);
     color: var(--ink);
@@ -203,9 +206,6 @@
   .fact svg { flex: none; width: 30px; height: 30px; }
 
   /* ---- contact and footer ---------------------------------------------- */
-  .contact { margin-top: 18px; padding: 20px 24px; }
-  .contact h2 { margin: 0 0 4px; font-size: 20px; }
-  .contact p { margin: 0; color: var(--ink-soft); font-size: 15px; }
   footer { margin-top: 28px; border-top: 1px solid var(--rule); padding: 18px 0 26px; }
   .foot { display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: space-between;
           color: var(--ink-quiet); font-size: 14px; }
@@ -363,21 +363,13 @@
     </div>
   </section>
 
-  <section class="wrap">
-    <div class="card contact">
-      <h2>Contact</h2>
-      <p>LAKSA is built by Shubham Tapadar, doing business as Laksa Technology, an
-        Ontario-registered business.<br>
-        Write to <a href="mailto:hello@laksa.app">hello@laksa.app</a></p>
-    </div>
-  </section>
 </main>
 
 <footer>
   <div class="wrap">
     <div class="foot">
       <span>&copy; Laksa Technology</span>
-      <span><a href="/privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="/delete-account.html">Delete your account</a></span>
+      <span><a href="/contact.html">Contact</a> &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="/delete-account.html">Delete your account</a></span>
     </div>
     <p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p>
   </div>
