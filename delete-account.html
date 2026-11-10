@@ -122,8 +122,8 @@
       <li>Type <code>DELETE</code> to confirm.</li>
     </ol>
     <p>
-      The account and its data are removed straight away. This cannot be
-      undone.
+      The account is closed immediately and its account-linked data is
+      deleted from LAKSA's active systems. This cannot be undone.
     </p>
 
     <div class="card">
@@ -153,34 +153,34 @@
     </div>
 
     <h2>What gets deleted</h2>
-    <p>Everything held against your account:</p>
-    <ul>
-      <li>Your account and sign-in details &mdash; email address, mobile
-          number, and any Google or Facebook connection, including the
-          sign-in record Google's Firebase keeps for us</li>
-      <li>Your shop's trading history &mdash; the products you stocked,
-          including any you added yourself and the pictures drawn for them,
-          the sales and orders you recorded, and your stock counts</li>
-      <li>Everything the app calculated from those &mdash; stock estimates,
-          supplier lead times, forecasts and reorder suggestions</li>
-      <li>Your notification token, so the app stops contacting your device</li>
-    </ul>
+    <p>
+      Everything associated with your LAKSA account, including your account
+      and sign-in information; shop, product, sales, order and stock data;
+      account-linked information created by LAKSA; optional bill images and
+      voice recordings and information extracted from them; account-linked
+      usage, device and regional information; any problem reports you sent
+      through the app; and notification or sign-in credentials.
+    </p>
     <p>
       The email address or mobile number becomes free to use for a new account
       again.
+    </p>
+    <p>
+      Deleting the account also clears LAKSA's locally stored account data
+      from the device when deletion is performed inside the app. If you
+      request deletion by email while the app is still installed,
+      uninstalling the app removes any remaining local copy from that device.
     </p>
 
     <h2>What we keep, and for how long</h2>
     <p>
       Backups are overwritten on their ordinary cycle rather than edited, so a
-      copy may persist in them briefly after deletion. Crash reports are the
-      other exception: they identify an installation of the app rather than a
-      person, so deleting an account cannot reach them, and Google removes
-      them on its own schedule. And if you ever used Report a problem, a copy
-      of what you wrote sits in our support mailbox, where the app cannot
-      reach it: ask and we will delete it. Beyond those, and anything we are legally
-      required to keep, the deleted account's personal and trading data is
-      not retained &mdash; the
+      copy may persist in them briefly after deletion. Technical crash
+      reports are handled separately by Firebase Crashlytics and are not
+      linked by LAKSA to your account; they are retained according to
+      Firebase's applicable retention schedule. Beyond those, and anything we
+      are legally required to keep, the deleted account's personal and
+      trading data is not retained &mdash; the
       <a href="/privacy.html#how-long-we-keep-it">Privacy Policy</a> sets out
       each case.
     </p>
